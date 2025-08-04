@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sala de Leitura - Diretoria de Ensino - Região de Adamantina</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap');
+    
+    body {
+      font-family: "Open Sans", sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      background-attachment: fixed;
+      color: #1e293b;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Fundo sutil e profissional */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 20% 80%, rgba(30, 58, 138, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: white;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.025em;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 1.1rem;
+      opacity: 0.9;
+      font-weight: 400;
+    }
+
+    .container {
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .search-section {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .search-section h2 {
+      font-family: "Inter", sans-serif;
+      color: #1e3a8a;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+    }
+
+    .search-section p {
+      color: #475569;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      max-width: 600px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      font-family: "Open Sans", sans-serif;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    input[type="text"]::placeholder {
+      color: #94a3b8;
+    }
+
+    .table-container {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 1rem 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    th {
+      text-align: center;
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      font-family: "Inter", sans-serif;
+    }
+
+    tbody tr {
+      transition: all 0.2s ease;
+    }
+
+    tbody tr:hover {
+      background: #f8fafc;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    tbody tr:nth-child(even):hover {
+      background: #f1f5f9;
+    }
+
+    td {
+      font-size: 0.95rem;
+      color: #374151;
+    }
+
+    /* Estilo para quando não há resultados */
+    .no-results {
+      text-align: center;
+      padding: 3rem;
+      color: #64748b;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      header p {
+        font-size: 1rem;
+      }
+
+      .container {
+        margin: 1rem;
+        padding: 1.5rem 1rem;
+        border-radius: 8px;
+      }
+
+      .search-section h2 {
+        font-size: 1.5rem;
+      }
+
+      input[type="text"] {
+        padding: 0.8rem 1.2rem;
+        font-size: 1rem;
+        width: 90%;
+      }
+
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      th {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+
+      tr {
+        margin-bottom: 1.5rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 1rem;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      }
+
+      td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        padding-bottom: 0.8rem;
+        font-size: 0.9rem;
+      }
+
+      td::before {
+        position: absolute;
+        top: 0;
+        left: 1rem;
+        width: 45%;
+        font-weight: 600;
+        color: #1e3a8a;
+        white-space: nowrap;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-family: "Inter", sans-serif;
+      }
+
+      td:nth-of-type(1)::before { content: "Tombo"; }
+      td:nth-of-type(2)::before { content: "Título"; }
+      td:nth-of-type(3)::before { content: "Autor"; }
+      td:nth-of-type(4)::before { content: "Classificação"; }
+      td:nth-of-type(5)::before { content: "Assunto"; }
+      td:nth-of-type(6)::before { content: "Localização"; }
+    }
+
+    /* Animação de carregamento */
+    .loading {
+      text-align: center;
+      padding: 2rem;
+      color: #64748b;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Melhorias de acessibilidade */
+    *:focus {
+      outline: 2px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    /* Scrollbar personalizada */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      background-color: rgba(255, 255, 255, 0.8);
+      color: #64748b;
+      font-size: 0.9rem;
+      border-top: 1px solid #e2e8f0;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.4);
+      backdrop-filter: blur(3px);
+    }
+    
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 2rem;
+      border-radius: 8px;
+      width: 70%;
+      max-width: 400px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      position: relative;
+    }
+    
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+    }
+    
+    .close:hover {
+      color: #000;
+    }
+  
+#paginacao button {
+  background-color: #1e3a8a;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  margin: 0 0.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+}
+#paginacao button:hover {
+  background-color: #1e40af;
+}
+#paginacao span {
+  font-weight: 500;
+  font-size: 1rem;
+  color: #374151;
+}
+</style>
+</head>
+<body>
+<header>
+<h1>Sala de Leitura</h1>
+<p>Diretoria de Ensino - Região de Adamantina</p>
+</header>
+<div class="container">
+<div class="search-section">
+<h2>Consulta ao Acervo Bibliográfico</h2>
+<p>Utilize o campo de busca para localizar livros por título, autor ou assunto em nosso acervo.</p>
+<p>Para mais informações sobre empréstimos e disponibilidade, <a href="#" onclick="mostrarContato()" style="color: #1e3a8a; font-weight: 600;">entre em contato conosco</a>.</p>
+</div>
+<input id="searchInput" onkeyup="filterTable()" placeholder="Digite sua busca..." type="text"/>
+<div class="table-container">
+<table id="booksTable">
+<thead>
+<tr>
+<th>Tombo</th>
+<th>Título</th>
+<th>Autor</th>
+<th>Classificação</th>
+<th>Assunto</th>
+<th>Localização</th>
+</tr>
+</thead>
+<tbody id="tableBody">
+<tr class="loading">
+<td colspan="6">Carregando acervo...</td>
+</tr>
+</tbody>
+</table>
+</div><div id="paginacao" style="text-align: center; margin-top: 1rem;"></div>
+</div>
+<footer>
+    <p>© 2025 Diretoria de Ensino - Região de Adamantina. Todos os direitos reservados.</p>
+</footer>
+<script>
+  let livros = [];
+  let paginaAtual = 1;
+  const livrosPorPagina = 50;
+
+  function renderTable(data, pagina = 1) {
+    const tbody = document.getElementById("tableBody");
+    tbody.innerHTML = "";
+
+    const inicio = (pagina - 1) * livrosPorPagina;
+    const fim = inicio + livrosPorPagina;
+    const paginaDados = data.slice(inicio, fim);
+
+    if (data.length === 0) {
+      tbody.innerHTML = "<tr class='no-results'><td colspan='6'>Nenhum resultado encontrado para os termos de busca informados.</td></tr>";
+      document.getElementById("paginacao").innerHTML = "";
+      return;
+    }
+
+    paginaDados.forEach((livro) => {
+      const row = `<tr>
+        <td style="text-align: center">${livro.tombo}</td>
+        <td>${livro.titulo ?? ''}</td>
+        <td>${livro.autor ?? ''}</td>
+        <td>${livro.classificacao ?? ''}</td>
+        <td>${livro.assunto ?? ''}</td>
+        <td style="text-align: center">${livro.localizacao ?? ''}</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+
+    renderPaginacao(data.length, pagina);
+  }
+
+  function renderPaginacao(total, pagina) {
+    const totalPaginas = Math.ceil(total / livrosPorPagina);
+    const paginacao = document.getElementById("paginacao");
+    paginacao.innerHTML = "";
+
+    if (totalPaginas <= 1) return;
+
+    const paginaInfo = document.createElement("span");
+    paginaInfo.textContent = ` Página ${pagina} de ${totalPaginas} `;
+    paginacao.appendChild(paginaInfo);
+    paginacao.appendChild(document.createElement("br"));
+    paginacao.appendChild(document.createElement("br"));
+
+    if (pagina > 1) {
+      const btnAnterior = document.createElement("button");
+      btnAnterior.textContent = "← Anterior";
+      btnAnterior.onclick = () => renderTable(livrosFiltrados, pagina - 1);
+      paginacao.appendChild(btnAnterior);
+    }
+
+    if (pagina < totalPaginas) {
+      const btnProxima = document.createElement("button");
+      btnProxima.textContent = "Próxima →";
+      btnProxima.onclick = () => renderTable(livrosFiltrados, pagina + 1);
+      paginacao.appendChild(btnProxima);
+    }
+  }
+
+  let livrosFiltrados = [];
+
+  function filterTable() {
+    const input = document.getElementById("searchInput").value.toLowerCase().trim();
+
+    if (input === '') {
+      const tbody = document.getElementById("tableBody");
+      tbody.innerHTML = "<tr class='no-results'><td colspan='6'>Digite um termo de busca para consultar o acervo.</td></tr>";
+      document.getElementById("paginacao").innerHTML = "";
+      return;
+    }
+
+    livrosFiltrados = livros.filter(livro =>
+      (String(livro.titulo ?? '')).toLowerCase().includes(input) ||
+      (String(livro.autor ?? '')).toLowerCase().includes(input) ||
+      (String(livro.assunto ?? '')).toLowerCase().includes(input)
+    );
+
+    paginaAtual = 1;
+    renderTable(livrosFiltrados, paginaAtual);
+  }
+
+  fetch('livros.json')
+    .then(response => response.json())
+    .then(data => {
+      livros = data;
+      livrosFiltrados = livros;
+      const tbody = document.getElementById("tableBody");
+      tbody.innerHTML = "<tr class='no-results'><td colspan='6'>Digite um termo de busca para consultar o acervo.</td></tr>";
+    })
+    .catch(error => {
+      console.error('Erro ao carregar livros:', error);
+      const tbody = document.getElementById("tableBody");
+      tbody.innerHTML = "<tr class='no-results'><td colspan='6'>Erro ao carregar o acervo. Tente novamente mais tarde.</td></tr>";
+    });
+
+  function mostrarContato() {
+    document.getElementById('contatoModal').style.display = 'block';
+  }
+
+  function fecharContato() {
+    document.getElementById('contatoModal').style.display = 'none';
+  }
+</script>
+<script async data-id="101479870" src="//static.getclicky.com/js"></script>
+<div class="modal" id="contatoModal" onclick="fecharContato()">
+<div class="modal-content" onclick="event.stopPropagation()" style="text-align: center;">
+<span class="close" onclick="fecharContato()">×</span>
+<h2>Informações de Contato</h2>
+<p style="font-size: 1.1rem; margin-top: 1rem;"><strong>Telefone:</strong> (18) 3502-2325</p>
+<p style="font-size: 1.1rem;"><strong>E-mail:</strong> <a href="mailto:deadabib@educacao.sp.gov.br" style="color: #1e3a8a;">deadabib@educacao.sp.gov.br</a></p>
+</div>
+</div>
+</body>
+</html>
+
