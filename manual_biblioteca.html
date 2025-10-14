@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Uso - Sistema Sala de Leitura</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Open Sans", sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            background-attachment: fixed;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: -2rem -2rem 3rem -2rem;
+            border-radius: 12px 12px 0 0;
+        }
+        
+        h1 {
+            font-family: "Inter", sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.025em;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        h2 {
+            font-family: "Inter", sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 3rem 0 1.5rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        h3 {
+            font-family: "Inter", sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #374151;
+            margin: 2rem 0 1rem 0;
+        }
+        
+        h4 {
+            font-family: "Inter", sans-serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #4b5563;
+            margin: 1.5rem 0 0.8rem 0;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            font-size: 1rem;
+        }
+        
+        .toc {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .toc h3 {
+            margin-top: 0;
+            color: #1e3a8a;
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .toc li {
+            margin: 0.5rem 0;
+            padding-left: 1rem;
+        }
+        
+        .toc a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        
+        .warning {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .info {
+            background: #dbeafe;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .success {
+            background: #d1fae5;
+            border-left: 4px solid #10b981;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .step {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .step-number {
+            background: #1e3a8a;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 1rem;
+        }
+        
+        .screenshot {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .screenshot-caption {
+            background: #f8fafc;
+            padding: 0.8rem 1rem;
+            font-size: 0.9rem;
+            color: #64748b;
+            font-style: italic;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        
+        .feature-card h4 {
+            margin-top: 0;
+            color: #1e3a8a;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        th {
+            background: #1e3a8a;
+            color: white;
+            font-weight: 600;
+            font-family: "Inter", sans-serif;
+        }
+        
+        tr:hover {
+            background: #f8fafc;
+        }
+        
+        code {
+            background: #f1f5f9;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+            
+            header {
+                padding: 2rem 1rem;
+                margin: -1rem -1rem 2rem -1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        ol, ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+        
+        li {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Manual de Uso</h1>
+            <p class="subtitle">Sistema de Consulta e Gerenciamento - Sala de Leitura</p>
+            <p class="subtitle">Diretoria de Ensino - Região de Adamantina</p>
+        </header>
+
+        <div class="info">
+            <strong>Versão:</strong> 2.0 | <strong>Data:</strong> Setembro 2025 | <strong>Autor:</strong> Manus AI
+        </div>
+
+        <div class="toc">
+            <h3>Índice</h3>
+            <ul>
+                <li><a href="#introducao">1. Introdução</a></li>
+                <li><a href="#visao-geral">2. Visão Geral do Sistema</a></li>
+                <li><a href="#usuario-final">3. Manual do Usuário Final</a>
+                    <ul style="margin-left: 1rem;">
+                        <li><a href="#acesso-sistema">3.1 Acessando o Sistema</a></li>
+                        <li><a href="#realizando-busca">3.2 Realizando Buscas</a></li>
+                        <li><a href="#interpretando-resultados">3.3 Interpretando os Resultados</a></li>
+                        <li><a href="#contato">3.4 Entrando em Contato</a></li>
+                    </ul>
+                </li>
+                <li><a href="#administrador">4. Manual do Administrador</a>
+                    <ul style="margin-left: 1rem;">
+                        <li><a href="#acesso-admin">4.1 Acessando o Painel Administrativo</a></li>
+                        <li><a href="#gerenciar-acervo">4.2 Gerenciando o Acervo</a></li>
+                        <li><a href="#adicionar-livros">4.3 Adicionando Novos Livros</a></li>
+                        <li><a href="#editar-livros">4.4 Editando Informações</a></li>
+                        <li><a href="#backup-dados">4.5 Backup e Restauração</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+
+        <h2 id="introducao">1. Introdução</h2>
+        
+        <p>O Sistema de Consulta e Gerenciamento da Sala de Leitura da Diretoria de Ensino da Região de Adamantina é uma plataforma web desenvolvida para facilitar o acesso e a gestão do acervo bibliográfico disponível na instituição. Este manual abrangente foi elaborado para orientar tanto os usuários finais quanto os administradores do sistema, proporcionando instruções detalhadas sobre todas as funcionalidades disponíveis.</p>
+
+        <p>O sistema foi projetado com foco na usabilidade e acessibilidade, apresentando uma interface limpa e intuitiva que permite consultas rápidas e eficientes ao catálogo de livros. Para os administradores, oferece ferramentas robustas de gerenciamento que facilitam a manutenção e atualização do acervo, garantindo que as informações estejam sempre precisas e atualizadas.</p>
+
+        <p>Este documento está estruturado de forma didática, começando com uma visão geral do sistema e progredindo para instruções específicas para cada tipo de usuário. Cada seção inclui exemplos práticos e capturas de tela para facilitar a compreensão e o uso efetivo da plataforma.</p>
+
+        <div class="warning">
+            <strong>Importante:</strong> Este manual refere-se à versão atual do sistema. Futuras atualizações podem introduzir novas funcionalidades ou modificar procedimentos existentes.
+        </div>
+
+        <h2 id="visao-geral">2. Visão Geral do Sistema</h2>
+
+        <p>O Sistema de Sala de Leitura é composto por dois módulos principais que atendem a diferentes necessidades e perfis de usuários. O módulo de consulta pública permite que qualquer pessoa acesse o catálogo de livros e realize buscas no acervo, enquanto o módulo administrativo oferece ferramentas completas para gestão e manutenção das informações bibliográficas.</p>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>Módulo de Consulta Pública</h4>
+                <p>Interface principal destinada aos usuários finais, permitindo consultas ao acervo através de sistema de busca avançado. Inclui funcionalidades de pesquisa por título, autor e assunto, com resultados paginados e informações de contato para esclarecimentos adicionais.</p>
+            </div>
+            <div class="feature-card">
+                <h4>Módulo Administrativo</h4>
+                <p>Painel de controle exclusivo para administradores, oferecendo ferramentas completas para cadastro, edição e remoção de livros do acervo. Inclui funcionalidades de importação e exportação de dados, além de sistema de backup integrado.</p>
+            </div>
+        </div>
+
+        <h3>Características Técnicas</h3>
+
+        <p>O sistema foi desenvolvido utilizando tecnologias web modernas, garantindo compatibilidade com os principais navegadores e dispositivos. A arquitetura responsiva assegura uma experiência consistente tanto em computadores desktop quanto em dispositivos móveis, adaptando-se automaticamente ao tamanho da tela do usuário.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Aspecto</th>
+                    <th>Especificação</th>
+                    <th>Observações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tecnologia Frontend</td>
+                    <td>HTML5, CSS3, JavaScript</td>
+                    <td>Compatível com navegadores modernos</td>
+                </tr>
+                <tr>
+                    <td>Armazenamento de Dados</td>
+                    <td>Arquivo JSON</td>
+                    <td>Formato leve e facilmente editável</td>
+                </tr>
+                <tr>
+                    <td>Responsividade</td>
+                    <td>Design adaptativo</td>
+                    <td>Otimizado para desktop e mobile</td>
+                </tr>
+                <tr>
+                    <td>Acessibilidade</td>
+                    <td>Padrões WCAG</td>
+                    <td>Interface inclusiva e acessível</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info">
+            <strong>Compatibilidade:</strong> O sistema é compatível com Chrome 80+, Firefox 75+, Safari 13+, Edge 80+ e versões equivalentes de outros navegadores baseados em Chromium.
+        </div>
+
+
+        <h2 id="usuario-final">3. Manual do Usuário Final</h2>
+
+        <p>Esta seção é destinada a todos os usuários que desejam consultar o acervo da Sala de Leitura. O sistema de consulta foi projetado para ser intuitivo e acessível, permitindo que qualquer pessoa, independentemente de seu nível de familiaridade com tecnologia, possa localizar facilmente os livros disponíveis no acervo.</p>
+
+        <h3 id="acesso-sistema">3.1 Acessando o Sistema</h3>
+
+        <p>Para acessar o sistema de consulta da Sala de Leitura, você precisará de um navegador web atualizado e conexão com a internet. O sistema está hospedado em servidor web e pode ser acessado através do endereço fornecido pela Diretoria de Ensino da Região de Adamantina.</p>
+
+        <div class="step">
+            <span class="step-number">1</span>
+            <strong>Abra seu navegador web preferido</strong><br>
+            Recomendamos o uso de navegadores atualizados como Google Chrome, Mozilla Firefox, Safari ou Microsoft Edge para garantir a melhor experiência de uso.
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <strong>Digite o endereço do sistema</strong><br>
+            Insira o URL fornecido pela instituição na barra de endereços do navegador.
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            <strong>Visualize a página principal</strong><br>
+            Ao acessar o sistema, você verá a interface principal conforme mostrado na imagem abaixo.
+        </div>
+
+        <div class="screenshot">
+            <img src="/home/ubuntu/screenshots/index_html_2025-09-22_02-47-21_6270.webp" alt="Página principal do sistema">
+            <div class="screenshot-caption">
+                Figura 1: Página principal do Sistema de Sala de Leitura mostrando o cabeçalho institucional, título da seção de consulta e campo de busca centralizado.
+            </div>
+        </div>
+
+        <p>A interface apresenta um design limpo e profissional, com cores institucionais em tons de azul que facilitam a leitura e navegação. O cabeçalho exibe o título "Sala de Leitura" e identifica a "Diretoria de Ensino - Região de Adamantina".</p>
+
+        <div class="info">
+            <strong>Dica:</strong> Adicione o endereço do sistema aos seus favoritos para facilitar acessos futuros.
+        </div>
+
+        <h3 id="realizando-busca">3.2 Realizando Buscas</h3>
+
+        <p>O sistema de busca é o coração da plataforma de consulta, permitindo localizar rapidamente livros específicos dentro do extenso acervo da Sala de Leitura. O mecanismo de busca foi desenvolvido para ser flexível e inteligente, oferecendo resultados relevantes mesmo com informações parciais.</p>
+
+        <h4>Campo de Busca Principal</h4>
+
+        <p>Na página principal, você encontrará um campo de busca centralizado com o texto indicativo "Digite sua busca...". Este campo aceita diversos tipos de consulta e utiliza tecnologia de pesquisa em tempo real, o que significa que os resultados são filtrados conforme você digita.</p>
+
+        <div class="step">
+            <span class="step-number">1</span>
+            <strong>Clique no campo de busca</strong><br>
+            Posicione o cursor no campo de texto centralizado na página. O campo ficará destacado com uma borda azul.
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <strong>Digite os termos de busca</strong><br>
+            Insira as palavras-chave relacionadas ao livro que você procura. Você pode buscar por título, autor ou assunto.
+        </div>
+
+        <div class="screenshot">
+            <img src="/home/ubuntu/screenshots/index_html_2025-09-22_02-47-37_1821.webp" alt="Sistema com busca realizada">
+            <div class="screenshot-caption">
+                Figura 2: Exemplo de busca sendo realizada no sistema. Note que o termo "literatura" foi digitado no campo de busca e o sistema mostra a mensagem de resultado na tabela abaixo.
+            </div>
+        </div>
+
+        <h4>Tipos de Busca Suportados</h4>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Tipo de Busca</th>
+                    <th>Exemplo</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Por Título</td>
+                    <td>"Dom Casmurro"</td>
+                    <td>Busca livros cujo título contenha as palavras digitadas</td>
+                </tr>
+                <tr>
+                    <td>Por Autor</td>
+                    <td>"Machado de Assis"</td>
+                    <td>Localiza obras de um autor específico</td>
+                </tr>
+                <tr>
+                    <td>Por Assunto</td>
+                    <td>"Literatura Brasileira"</td>
+                    <td>Encontra livros relacionados a um tema ou área</td>
+                </tr>
+                <tr>
+                    <td>Busca Parcial</td>
+                    <td>"Dom" ou "Machado"</td>
+                    <td>Funciona com palavras incompletas ou parciais</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 id="interpretando-resultados">3.3 Interpretando os Resultados</h3>
+
+        <p>Após realizar uma busca, os resultados são apresentados em uma tabela organizada e de fácil leitura. Cada linha da tabela representa um livro do acervo, com informações detalhadas distribuídas em colunas específicas.</p>
+
+        <h4>Estrutura da Tabela de Resultados</h4>
+
+        <p>A tabela de resultados está organizada em seis colunas principais, cada uma contendo informações específicas sobre os livros encontrados:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Coluna</th>
+                    <th>Conteúdo</th>
+                    <th>Utilidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tombo</td>
+                    <td>Número de identificação único</td>
+                    <td>Código para localização física do livro</td>
+                </tr>
+                <tr>
+                    <td>Título</td>
+                    <td>Nome completo da obra</td>
+                    <td>Identificação principal do livro</td>
+                </tr>
+                <tr>
+                    <td>Autor</td>
+                    <td>Nome do autor ou autores</td>
+                    <td>Informação sobre autoria da obra</td>
+                </tr>
+                <tr>
+                    <td>Classificação</td>
+                    <td>Código de classificação bibliográfica</td>
+                    <td>Sistema de organização temática</td>
+                </tr>
+                <tr>
+                    <td>Assunto</td>
+                    <td>Área temática ou gênero</td>
+                    <td>Contexto e categoria da obra</td>
+                </tr>
+                <tr>
+                    <td>Localização</td>
+                    <td>Posição física na biblioteca</td>
+                    <td>Onde encontrar o livro fisicamente</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 id="contato">3.4 Entrando em Contato</h3>
+
+        <p>O sistema inclui funcionalidades integradas para facilitar o contato com a equipe responsável pela Sala de Leitura. Na página principal, você encontrará um link "entre em contato conosco" que abre uma janela modal com as informações de contato.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Meio de Contato</th>
+                    <th>Informação</th>
+                    <th>Horário de Atendimento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Telefone</td>
+                    <td>(18) 3502-2325</td>
+                    <td>Horário comercial</td>
+                </tr>
+                <tr>
+                    <td>E-mail</td>
+                    <td>deadabib@educacao.sp.gov.br</td>
+                    <td>24 horas (resposta em até 48h)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="success">
+            <strong>Dica Importante:</strong> Ao entrar em contato, mencione sempre o número do tombo do livro que você encontrou no sistema para facilitar o atendimento.
+        </div>
+
+
+        <h2 id="administrador">4. Manual do Administrador</h2>
+
+        <p>Esta seção é destinada exclusivamente aos administradores responsáveis pela gestão e manutenção do acervo da Sala de Leitura. O módulo administrativo oferece ferramentas completas para cadastro, edição, remoção e organização dos livros, além de funcionalidades avançadas para backup e restauração de dados.</p>
+
+        <div class="warning">
+            <strong>Importante:</strong> O acesso ao módulo administrativo deve ser restrito apenas a pessoal autorizado. Mantenha sempre backups atualizados antes de realizar operações que modifiquem grandes volumes de dados.
+        </div>
+
+        <h3 id="acesso-admin">4.1 Acessando o Painel Administrativo</h3>
+
+        <p>O painel administrativo está localizado em um diretório separado do sistema principal, proporcionando uma camada adicional de segurança e organização. O acesso é realizado através de URL específica que deve ser fornecida apenas aos administradores autorizados.</p>
+
+        <div class="step">
+            <span class="step-number">1</span>
+            <strong>Acesse o URL administrativo</strong><br>
+            Digite o endereço do painel administrativo no navegador. O URL geralmente segue o padrão: [endereço-principal]/gerenciamento/
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <strong>Visualize a interface administrativa</strong><br>
+            A página administrativa carregará com o título "Gerenciamento do Acervo - Sala de Leitura" conforme mostrado abaixo.
+        </div>
+
+        <div class="screenshot">
+            <img src="/home/ubuntu/screenshots/index_html_2025-09-22_02-47-45_4231.webp" alt="Painel administrativo">
+            <div class="screenshot-caption">
+                Figura 3: Interface do painel administrativo mostrando os três botões principais de ação: "Adicionar Novo Livro", "Carregar Acervo" e "Baixar Dados Atualizados", além do campo de busca administrativa.
+            </div>
+        </div>
+
+        <h4>Interface do Painel Administrativo</h4>
+
+        <p>A interface administrativa mantém o mesmo padrão visual do sistema principal, garantindo consistência na experiência do usuário. O layout é organizado em seções distintas com três botões principais que representam as ações mais comuns realizadas pelos administradores.</p>
+
+        <h3 id="gerenciar-acervo">4.2 Gerenciando o Acervo</h3>
+
+        <p>O gerenciamento do acervo envolve uma série de operações que vão desde a visualização e busca de livros existentes até a realização de backups completos do sistema. A tabela de gerenciamento apresenta as mesmas colunas da interface pública, acrescida de uma coluna adicional "Ações" que contém os controles para edição de registros.</p>
+
+        <h3 id="adicionar-livros">4.3 Adicionando Novos Livros</h3>
+
+        <p>O processo de adição de novos livros ao acervo é uma das funcionalidades mais importantes do sistema administrativo. O formulário de cadastro foi desenvolvido para garantir a consistência e completude das informações, incluindo validações automáticas e geração de números de tombo únicos.</p>
+
+        <div class="step">
+            <span class="step-number">1</span>
+            <strong>Clique em "Adicionar Novo Livro"</strong><br>
+            O botão azul na seção superior da página abrirá o formulário de cadastro.
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <strong>Preencha o formulário</strong><br>
+            O sistema exibirá um formulário completo com todos os campos necessários para o cadastro.
+        </div>
+
+        <div class="screenshot">
+            <img src="/home/ubuntu/screenshots/index_html_2025-09-22_02-48-01_8862.webp" alt="Formulário de cadastro">
+            <div class="screenshot-caption">
+                Figura 4: Formulário de cadastro de novos livros aberto, mostrando todos os campos obrigatórios: Tombo (gerado automaticamente), Título, Autor, Classificação, Assunto e Localização, além dos botões "Salvar Livro" e "Cancelar".
+            </div>
+        </div>
+
+        <h4>Campos do Formulário</h4>
+
+        <p>Cada campo do formulário de cadastro tem características específicas e diretrizes de preenchimento que devem ser seguidas para manter a padronização do acervo:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Campo</th>
+                    <th>Descrição</th>
+                    <th>Diretrizes de Preenchimento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tombo</td>
+                    <td>Identificador único automático</td>
+                    <td>Gerado automaticamente pelo sistema</td>
+                </tr>
+                <tr>
+                    <td>Título</td>
+                    <td>Nome completo da obra</td>
+                    <td>Digite exatamente como aparece na capa</td>
+                </tr>
+                <tr>
+                    <td>Autor</td>
+                    <td>Nome do autor principal</td>
+                    <td>Formato: Nome Sobrenome (ex: Machado de Assis)</td>
+                </tr>
+                <tr>
+                    <td>Classificação</td>
+                    <td>Código de classificação bibliográfica</td>
+                    <td>Siga o sistema de classificação adotado</td>
+                </tr>
+                <tr>
+                    <td>Assunto</td>
+                    <td>Área temática ou gênero</td>
+                    <td>Use termos padronizados (ex: Literatura Brasileira)</td>
+                </tr>
+                <tr>
+                    <td>Localização</td>
+                    <td>Posição física na biblioteca</td>
+                    <td>Código da estante/prateleira (ex: A1, B2)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info">
+            <strong>Dica de Produtividade:</strong> Mantenha uma lista de termos padronizados para os campos "Assunto" e "Classificação" para garantir consistência no cadastro.
+        </div>
+
+        <h3 id="editar-livros">4.4 Editando Informações</h3>
+
+        <p>A funcionalidade de edição permite corrigir informações incorretas, atualizar dados desatualizados ou complementar registros incompletos. Para editar um livro existente, é necessário primeiro localizá-lo através do sistema de busca administrativa e depois clicar no botão "Editar" correspondente na tabela de resultados.</p>
+
+        <div class="warning">
+            <strong>Atenção:</strong> O número de tombo não pode ser alterado durante a edição. Se for necessário alterar o tombo, será preciso remover o registro atual e criar um novo cadastro.
+        </div>
+
+        <h3 id="backup-dados">4.5 Backup e Restauração</h3>
+
+        <p>O sistema de backup e restauração é fundamental para garantir a segurança e continuidade do acervo digital. O backup dos dados é realizado através da funcionalidade "Baixar Dados Atualizados", que gera um arquivo JSON contendo todas as informações do acervo atual.</p>
+
+        <h4>Realizando Backup dos Dados</h4>
+
+        <div class="step">
+            <span class="step-number">1</span>
+            <strong>Clique em "Baixar Dados Atualizados"</strong><br>
+            O botão laranja na seção superior iniciará o processo de geração do arquivo de backup.
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <strong>Escolha o local de salvamento</strong><br>
+            Seu navegador solicitará onde salvar o arquivo. Escolha um local seguro e de fácil acesso.
+        </div>
+
+        <h4>Restaurando Dados</h4>
+
+        <p>A restauração de dados permite carregar informações a partir de um arquivo de backup previamente criado através do botão "Carregar Acervo".</p>
+
+        <div class="warning">
+            <strong>Importante:</strong> A operação de restauração substitui completamente os dados atuais pelos dados do arquivo de backup. Certifique-se de fazer um backup dos dados atuais antes de realizar uma restauração.
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Situação</th>
+                    <th>Frequência Recomendada</th>
+                    <th>Observações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cadastro intensivo</td>
+                    <td>Diário</td>
+                    <td>Após sessões com mais de 10 novos livros</td>
+                </tr>
+                <tr>
+                    <td>Uso normal</td>
+                    <td>Semanal</td>
+                    <td>Manutenção preventiva regular</td>
+                </tr>
+                <tr>
+                    <td>Antes de atualizações</td>
+                    <td>Sempre</td>
+                    <td>Backup obrigatório antes de mudanças no sistema</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <footer>
+            <p><strong>Manual de Uso - Sistema Sala de Leitura</strong></p>
+            <p>Diretoria de Ensino - Região de Adamantina</p>
+            <p>Versão 2.0 - Setembro 2025</p>
+            <p>Desenvolvido por Manus AI</p>
+            <br>
+            <p>Este manual foi elaborado para facilitar o uso eficiente do sistema e garantir a melhor experiência possível para todos os usuários.</p>
+            <p><strong>Contato:</strong> (18) 3502-2325 | deadabib@educacao.sp.gov.br</p>
+        </footer>
+
+    </div>
+</body>
+</html>
+
