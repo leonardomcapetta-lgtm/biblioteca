@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 
 <html lang="pt-BR">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Biblioteca - Nome da Instituição</title>
-</head>
+    <head>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+        <title>Biblioteca - Nome da Instituição</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
 <body>
-<header>
-<h1>Biblioteca</h1>
-<p>Nome da Instituição</p>
-</header>
-<div class="container">
-<div class="search-section">
-<h2>Consulta ao Acervo Bibliográfico</h2>
-<p>Utilize o campo de busca para localizar livros por título, autor ou assunto em nosso acervo.</p>
-<p>Para mais informações sobre empréstimos e disponibilidade, <a href="#" onclick="mostrarContato()" style="color: #1e3a8a; font-weight: 600;">entre em contato conosco</a>.</p>
-</div>
-<input id="searchInput" onkeyup="filterTable()" placeholder="Digite sua busca..." type="text"/>
-<div class="table-container">
-<table id="booksTable">
-<thead>
-<tr>
-<th>Tombo</th>
-<th>Título</th>
-<th>Autor</th>
-<th>Classificação</th>
-<th>Assunto</th>
-<th>Localização</th>
-</tr>
-</thead>
-<tbody id="tableBody">
-<tr class="loading">
-<td colspan="6">Carregando acervo...</td>
-</tr>
-</tbody>
-</table>
-</div><div id="paginacao" style="text-align: center; margin-top: 1rem;"></div>
+    <header>
+        <h1>Biblioteca</h1>
+        <p>Nome da Instituição</p>
+    </header>
+    <div class="container">
+        <div class="search-section">
+            <h2>Consulta ao Acervo Bibliográfico</h2>
+            <p>Utilize o campo de busca para localizar livros por título, autor ou assunto em nosso acervo.</p>
+            <p>Para mais informações sobre empréstimos e disponibilidade, <a href="#" onclick="mostrarContato()" style="color: #1e3a8a; font-weight: 600;">entre em contato conosco</a>.</p>
+        </div>
+        <input id="searchInput" onkeyup="filterTable()" placeholder="Digite sua busca..." type="text"/>
+        <div class="table-container">
+            <table id="booksTable">
+            <thead>
+                <tr>
+                    <th>Tombo</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Classificação</th>
+                    <th>Assunto</th>
+                    <th>Localização</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <tr class="loading">
+                    <td colspan="6">Carregando acervo...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div><div id="paginacao" style="text-align: center; margin-top: 1rem;"></div>
 </div>
 <footer>
     <p>© 2025 Nome da Instituição. Todos os direitos reservados.</p>
